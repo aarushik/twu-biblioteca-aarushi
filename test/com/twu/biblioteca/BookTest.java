@@ -46,6 +46,12 @@ public class BookTest {
     }
 
     @Test
+    public void testSetTitle() {
+        book.setTitle("Intro to Ruby");
+        assertEquals("Intro to Ruby", book.getTitle());
+    }
+
+    @Test
     public void testSetNegativeYear() {
         try {
             book.setYear(-2);
