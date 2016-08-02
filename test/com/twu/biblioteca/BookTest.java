@@ -26,4 +26,18 @@ public class BookTest {
     public void testGetYear() {
         assertEquals(2016, book.getYear());
     }
+
+    @Test
+    public void testSetAuthor() {
+        book.setAuthor("Jessica");
+        assertEquals("Jessica", book.getAuthor());
+    }
+
+    @Test
+    public void testSetYear() {
+        book.setYear(2015);
+        assertEquals(2015, book.getYear());
+    }
+
+    
 }
