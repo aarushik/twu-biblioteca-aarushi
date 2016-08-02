@@ -15,7 +15,7 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        book = new Book("Aarushi", 2016);
+        book = new Book("Aarushi", 2016, "Intro to Java");
     }
 
     @Test
