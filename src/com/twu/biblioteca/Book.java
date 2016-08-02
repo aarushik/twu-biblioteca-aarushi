@@ -22,7 +22,11 @@ public class Book {
     }
 
     public void setYear(int year) {
-        this.year = year;
+        if (year <= 0) {
+            throw new IllegalArgumentException("Year has to be bigger than 0");
+        } else {
+            this.year = year;
+        }
     }
 
     public int getYear() {
