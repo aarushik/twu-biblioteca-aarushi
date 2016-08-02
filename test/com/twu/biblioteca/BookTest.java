@@ -41,11 +41,16 @@ public class BookTest {
     }
 
     @Test
+    public void testGetTitle() {
+        assertEquals("Intro to Java", book.getTitle());
+    }
+
+    @Test
     public void testSetNegativeYear() {
         try {
             book.setYear(-2);
             fail("Should throw exception");
-        } catch(IllegalArgumentException) {
+        } catch(IllegalArgumentException e) {
 
         }
     }
