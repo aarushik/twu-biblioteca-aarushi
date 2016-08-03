@@ -43,7 +43,7 @@ public class Library {
     public void returnBook(String bookName) {
         boolean bookFound = false;
         for (Book book : books) {
-            if (book.getTitle().matches(bookName) && !book.getAvailability()) { //print only available books
+            if (book.getTitle().matches(bookName) && !book.getAvailability()) {
                 book.setAvailability(true);
                 bookFound = true;
                 System.out.println("Thank you for returning the book");

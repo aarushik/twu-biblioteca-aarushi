@@ -18,9 +18,7 @@ public class BibliotecaApp {
             printMenu();
             userChoice = getInteger();
 
-            if (userChoice == 0) {
-                System.exit(0);
-            } else if(userChoice == 1) {
+            if(userChoice == 1) {
                 library.listBooks();
             } else if(userChoice == 2) {
                 System.out.println("Enter book name");
@@ -28,6 +26,10 @@ public class BibliotecaApp {
             } else if(userChoice == 3) {
                 System.out.println("Enter book name");
                 library.returnBook(getBookName());
+            } else if (userChoice == 4) {
+                System.exit(0);
+            } else {
+                System.out.println("Enter a valid");
             }
         }
 
@@ -55,7 +57,7 @@ public class BibliotecaApp {
 
     private static void printMenu() {
         System.out.println("Please choose one of the following options: \n 1: List Books \n 2:Checkout book" +
-                "\n 3: Return Book");
+                "\n 3: Return Book \n 4: Exit");
     }
 
     private static int getInteger() {
