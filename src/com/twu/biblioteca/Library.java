@@ -14,12 +14,13 @@ public class Library {
     }
 
     public void listBooks() {
-        String titleTemp = "%-10s %6s %6s%n";
+        String titleTemp = "%-10s %12s %9s%n";
+        String contentTemp = "%-10s %10s %9s%n";
 
         System.out.printf(titleTemp, "Title", "Author",  "Year");
         for (Book book : books) {
             if (book.getAvailability()) { //print only available books
-                System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getYear());
+                System.out.printf(contentTemp, book.getTitle(),  book.getAuthor(),  book.getYear());
             }
         }
     }
