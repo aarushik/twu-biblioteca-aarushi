@@ -8,11 +8,13 @@ public class Book {
     private String author;
     private int year;
     private String title;
+    private Boolean available;
 
-    public Book(String author, int year, String title) {
+    public Book(String author, int year, String title, Boolean available) {
         this.author = author;
         this.year = year;
         this.title = title;
+        this.available = available;
     }
 
     public void setAuthor(String author) {
@@ -41,5 +43,13 @@ public class Book {
 
     public String getTitle() {
         return title;
+    }
+
+    public void setAvailability(Boolean available) {
+        this.available = available;
+    }
+
+    public Boolean getAvailability() {
+        return available;
     }
 }
