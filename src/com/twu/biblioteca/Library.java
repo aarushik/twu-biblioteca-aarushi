@@ -26,13 +26,13 @@ public class Library {
         }
     }
 
-    public void checkout(String bookName) {
+    public void checkoutArticle(String bookName) {
         boolean bookFound = false;
-        for (Article book : articles) {
-            if (book.getTitle().matches(bookName) && book.getAvailability()) {
-                book.setAvailability(false);
+        for (Article article : articles) {
+            if (article.getTitle().matches(bookName) && article.getAvailability()) {
+                article.setAvailability(false);
                 bookFound = true;
-                System.out.println("Thank you! Enjoy the book");
+                System.out.println("Thank you! Enjoy the article");
             }
         }
 
@@ -41,13 +41,13 @@ public class Library {
         }
     }
 
-    public void returnBook(String bookName) {
+    public void returnArticle(String bookName) {
         boolean bookFound = false;
-        for (Article book : articles) {
-            if (book.getTitle().matches(bookName) && !book.getAvailability()) {
-                book.setAvailability(true);
+        for (Article article : articles) {
+            if (article.getTitle().matches(bookName) && !article.getAvailability()) {
+                article.setAvailability(true);
                 bookFound = true;
-                System.out.println("Thank you for returning the book");
+                System.out.println("Thank you for returning the article");
             }
         }
 

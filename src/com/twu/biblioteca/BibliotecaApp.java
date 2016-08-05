@@ -10,7 +10,7 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         int userChoice = -1;
-        populateBooks();
+        populateLibrary();
        // populateMovies();
         Library library = new Library(articles);
         welcomeMenu();
@@ -23,10 +23,10 @@ public class BibliotecaApp {
                 library.listBooks();
             } else if(userChoice == 2) {
                 System.out.println("Enter book name");
-                library.checkout(getBookName());
+                library.checkoutArticle(getBookName());
             } else if(userChoice == 3) {
                 System.out.println("Enter book name");
-                library.returnBook(getBookName());
+                library.returnArticle(getBookName());
             } else if (userChoice == 4) {
                 System.exit(0);
             } else {
@@ -35,15 +35,19 @@ public class BibliotecaApp {
         }
     }
 
-    private static void populateBooks() {
+    private static void populateLibrary() {
         Book javaBook = new Book("Aarushi", 2016, "Intro to Java", true);
         Book rubyBook = new Book("Aarushi", 2015, "Intro to Ruby", true);
         Book rBook = new Book("Aarushi", 2013, "Intro to R", true);
         Book CssBook = new Book("Aarushi",2014, "Intro to CSS", true);
+        Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
+        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, true);
         articles.add(javaBook);
         articles.add(rubyBook);
         articles.add(rBook);
         articles.add(CssBook);
+        articles.add(movie1);
+        articles.add(movie2);
     }
 
     private static void populateMovies() {

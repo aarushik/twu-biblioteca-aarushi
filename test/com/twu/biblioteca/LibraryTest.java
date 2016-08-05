@@ -23,34 +23,42 @@ public class LibraryTest {
     public void setUp() {
         book1 = new Book("Aarushi", 2016, "Intro to Java", true);
         book2 = new Book("Aarushi", 2014, "Intro to Ruby", true);
-        book3 = new Book("Aarushi", 2013, "Intro to R", true);
+        book3 = new Book("Aarushi", 2013, "Intro to R", false);
         movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-        movie2 = new Movie("Suicide Squad", "John", 2016, 10, true);
+        movie2 = new Movie("Suicide Squad", "John", 2016, 10, false);
         ArrayList<Article> articles = new ArrayList<Article>();
         articles.add(book1);
         articles.add(book2);
         articles.add(book3);
+        articles.add(movie1);
+        articles.add(movie2);
 
         library = new Library(articles);
     }
 
     @Test
     public void testBookCheckout() {
-        library.checkout("Intro to Java"); //removing book 1
+        library.checkoutArticle("Intro to Java"); //removing book 1
         assertEquals(false,book1.getAvailability());
     }
 
     @Test
     public void testBookReturn() {
-        library.returnBook("Intro to Java"); //returning book 1
-        assertEquals(true, book1.getAvailability());
+        library.returnArticle("Intro to R");
+        assertEquals(true, book3.getAvailability());
     }
 
     @Test
     public void testMovieCheckout() {
-        library.returnBook("Harry Potter");
-        //assertEquals(true, movie1.getAvailability());
+        library.checkoutArticle("Harry Potter");
+        assertEquals(false, movie1.getAvailability());
 
+    }
+
+    @Test
+    public void testMovieReturn() {
+        library.returnArticle("Suicide Squad");
+        assertEquals(true, movie2.getAvailability());
     }
 
 
