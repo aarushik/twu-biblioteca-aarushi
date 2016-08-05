@@ -14,32 +14,33 @@ public class MovieTest {
     private static final String DIRECTOR = "David Yates";
     private static final int YEAR = 2009;
     private static final int RATING = 10;
+    private static final Boolean AVAIL = true;
 
     @Before
     public void setUp() {
-        movie = new Movie(NAME, DIRECTOR, YEAR, RATING);
+        movie = new Movie(NAME, DIRECTOR, YEAR, RATING, AVAIL);
     }
 
     @Test
     public void getNameTest() {
-        assertEquals(NAME, movie.getName());
+        assertEquals(NAME, movie.getTitle());
     }
 
     @Test
     public void setNameTest() {
-        movie.setName("Deathly Hallows");
-        assertEquals("Deathly Hallows", movie.getName());
+        movie.setTitle("Deathly Hallows");
+        assertEquals("Deathly Hallows", movie.getTitle());
     }
 
     @Test
     public void getDirectorTest() {
-        assertEquals(DIRECTOR, movie.getDirector());
+        assertEquals(DIRECTOR, movie.getCreator());
     }
 
     @Test
     public void setDirectorTest() {
-        movie.setDirector("Chris Columbus");
-        assertEquals("Chris Columbus", movie.getDirector());
+        movie.setCreator("Chris Columbus");
+        assertEquals("Chris Columbus", movie.getCreator());
     }
 
     @Test
@@ -63,6 +64,5 @@ public class MovieTest {
         movie.setRating(2);
         assertEquals(2, movie.getRating());
     }
-
 
 }
