@@ -3,53 +3,14 @@ package com.twu.biblioteca;
 /**
  * Created by Aarushi on 2/08/2016.
  */
-public class Book {
+public class Book extends Article {
 
-    private String author;
     private int year;
     private String title;
     private Boolean available;
 
-    public Book(String author, int year, String title, Boolean available) {
-        this.author = author;
-        this.year = year;
-        this.title = title;
-        this.available = available;
+    public Book(String creator, int year, String title, Boolean available) {
+        super(title, creator, available, year);
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setYear(int year) {
-        if (year <= 0) {
-            throw new IllegalArgumentException("Year has to be bigger than 0");
-        } else {
-            this.year = year;
-        }
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setAvailability(Boolean available) {
-        this.available = available;
-    }
-
-    public Boolean getAvailability() {
-        return available;
-    }
 }

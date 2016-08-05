@@ -7,10 +7,11 @@ import java.util.ArrayList;
  */
 public class Library {
 
-    private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Article> articles = new ArrayList<Article>();
 
-    public Library(ArrayList<Book> books) {
-        this.books = books;
+    public Library(ArrayList<Article> articles) {
+        this.articles = articles;
+
     }
 
     public void listBooks() {
@@ -18,16 +19,16 @@ public class Library {
         String contentTemp = "%-10s %10s %9s%n";
 
         System.out.printf(titleTemp, "Title", "Author",  "Year");
-        for (Book book : books) {
-            if (book.getAvailability()) { //print only available books
-                System.out.printf(contentTemp, book.getTitle(),  book.getAuthor(),  book.getYear());
+        for (Article article : articles) {
+            if (article.getAvailability()) { //print only available articles
+                System.out.printf(contentTemp, article.getTitle(),  article.getCreator(),  article.getYear());
             }
         }
     }
 
     public void checkout(String bookName) {
         boolean bookFound = false;
-        for (Book book : books) {
+        for (Article book : articles) {
             if (book.getTitle().matches(bookName) && book.getAvailability()) {
                 book.setAvailability(false);
                 bookFound = true;
@@ -42,7 +43,7 @@ public class Library {
 
     public void returnBook(String bookName) {
         boolean bookFound = false;
-        for (Book book : books) {
+        for (Article book : articles) {
             if (book.getTitle().matches(bookName) && !book.getAvailability()) {
                 book.setAvailability(true);
                 bookFound = true;

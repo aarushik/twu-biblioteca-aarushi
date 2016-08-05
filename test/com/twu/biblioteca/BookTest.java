@@ -20,7 +20,7 @@ public class BookTest {
 
     @Test
     public void testGetAuthor() {
-        assertEquals("Aarushi", book.getAuthor());
+        assertEquals("Aarushi", book.getCreator());
     }
 
     @Test
@@ -30,8 +30,8 @@ public class BookTest {
 
     @Test
     public void testSetAuthor() {
-        book.setAuthor("Jessica");
-        assertEquals("Jessica", book.getAuthor());
+        book.setCreator("Jessica");
+        assertEquals("Jessica", book.getCreator());
     }
 
     @Test

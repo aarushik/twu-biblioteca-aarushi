@@ -6,12 +6,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class BibliotecaApp {
-    static ArrayList<Book> books = new ArrayList<Book>();
+    static ArrayList<Article> articles = new ArrayList<Article>();
 
     public static void main(String[] args) {
         int userChoice = -1;
         populateBooks();
-        Library library = new Library(books);
+       // populateMovies();
+        Library library = new Library(articles);
         welcomeMenu();
 
         while (userChoice != 0) {
@@ -32,12 +33,6 @@ public class BibliotecaApp {
                 System.out.println("Enter a valid");
             }
         }
-
-
-
-
-
-
     }
 
     private static void populateBooks() {
@@ -45,10 +40,18 @@ public class BibliotecaApp {
         Book rubyBook = new Book("Aarushi", 2015, "Intro to Ruby", true);
         Book rBook = new Book("Aarushi", 2013, "Intro to R", true);
         Book CssBook = new Book("Aarushi",2014, "Intro to CSS", true);
-        books.add(javaBook);
-        books.add(rubyBook);
-        books.add(rBook);
-        books.add(CssBook);
+        articles.add(javaBook);
+        articles.add(rubyBook);
+        articles.add(rBook);
+        articles.add(CssBook);
+    }
+
+    private static void populateMovies() {
+        Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
+        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, true);
+//
+//        movies.add(movie1);
+//        movies.add(movie2);
     }
 
     private static void welcomeMenu() {
