@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -39,7 +41,7 @@ public class LibraryTest {
     @Test
     public void testBookCheckout() {
         library.checkoutArticle("Intro to Java"); //removing book 1
-        assertEquals(false,book1.getAvailability());
+        assertEquals(false, book1.getAvailability());
     }
 
     @Test
@@ -59,6 +61,24 @@ public class LibraryTest {
     public void testMovieReturn() {
         library.returnArticle("Suicide Squad");
         assertEquals(true, movie2.getAvailability());
+    }
+
+    @Test
+    public void testInvalidArticleReturn() {
+        final ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        library.returnArticle("Invalid title");
+        assertEquals("That is not a valid article to return\n", output.toString());
+    }
+
+    @Test
+    public void testInvalidArticleCheckout() {
+        final ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        library.checkoutArticle("Invalid title");
+        assertEquals("That article is not available\n", output.toString());
     }
 
 
