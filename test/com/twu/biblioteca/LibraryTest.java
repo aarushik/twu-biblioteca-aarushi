@@ -81,14 +81,4 @@ public class LibraryTest {
         assertEquals("That article is not available\n", output.toString());
     }
 
-    @Test
-    public void testAuthentication() {
-        for (User user : users) {
-            if (user.id = id && user.password == password) {
-                isLoggedIn = true;
-            }
-        }
-    }
-
-
 }
