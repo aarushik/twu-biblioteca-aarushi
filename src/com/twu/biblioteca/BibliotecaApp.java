@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class BibliotecaApp {
-    static ArrayList<Article> articles = new ArrayList<Article>();
+
 
     public static void main(String[] args) {
         int userChoice = -1;
-        //populateLibrary();
-        Library library = new Library();
+
+        Library library = populateLibrary();
         welcomeMenu();
 
         while (userChoice != -2) {
@@ -53,19 +53,31 @@ public class BibliotecaApp {
         }
     }
 
-    private static void populateLibrary() {
+    private static Library populateLibrary() {
+        ArrayList<Article> articles = new ArrayList<Article>();
+        ArrayList<User> users = new ArrayList<User>();
+
         Book javaBook = new Book("Aarushi", 2016, "Intro to Java", true);
         Book rubyBook = new Book("Aarushi", 2015, "Intro to Ruby", true);
         Book rBook = new Book("Aarushi", 2013, "Intro to R", true);
         Book CssBook = new Book("Aarushi",2014, "Intro to CSS", true);
         Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, true);
+        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, false);
         articles.add(javaBook);
         articles.add(rubyBook);
         articles.add(rBook);
         articles.add(CssBook);
         articles.add(movie1);
         articles.add(movie2);
+
+
+        User user1 = new User("111-1111", "password", "user1", false, "user1@email.com", "0430512710");
+        User user2 = new User("222-2222", "password", "user2", false, "user2@email.com", "0430512711");
+        users.add(user1);
+        users.add(user2);
+
+        Library library = new Library(articles, users);
+        return library;
     }
 
     private static void populateMovies() {

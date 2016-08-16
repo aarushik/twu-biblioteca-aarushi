@@ -16,12 +16,14 @@ public class Library {
     private static ArrayList<User> users = new ArrayList<User>();
     private String currentUserId;
     private String currentUserPassword;
-    private Boolean loggedIn = false;
+    private Boolean loggedIn = true;
     private User loggedInUser;
 
 
-    public Library() {
-        populateLibrary();
+    public Library(ArrayList<Article> articles, ArrayList<User> users) {
+        this.articles = articles;
+        this.users = users;
+        //populateLibrary();
     }
 
     public void listBooks() {
@@ -105,6 +107,10 @@ public class Library {
         return loggedIn;
     }
 
+//    public User getUser(String libraryId) {
+//
+//    }
+
     private void printLoginPrompt() {
         System.out.println("Enter User Id:");
         currentUserId = getString();
@@ -138,28 +144,6 @@ public class Library {
         if (!loggedIn) { //couldn't find a user
             System.out.println("Error in credentials\n");
         }
-    }
-
-    private void populateLibrary() {
-
-        Book javaBook = new Book("Aarushi", 2016, "Intro to Java", true);
-        Book rubyBook = new Book("Aarushi", 2015, "Intro to Ruby", true);
-        Book rBook = new Book("Aarushi", 2013, "Intro to R", true);
-        Book CssBook = new Book("Aarushi",2014, "Intro to CSS", true);
-        Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, false);
-        articles.add(javaBook);
-        articles.add(rubyBook);
-        articles.add(rBook);
-        articles.add(CssBook);
-        articles.add(movie1);
-        articles.add(movie2);
-
-
-        User user1 = new User("111-1111", "password", "user1", false, "user1@email.com", "0430512710");
-        User user2 = new User("222-2222", "password", "user2", false, "user2@email.com", "0430512711");
-        users.add(user1);
-        users.add(user2);
     }
 
 
