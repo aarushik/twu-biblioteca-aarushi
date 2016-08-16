@@ -98,6 +98,8 @@ public class Library {
                     System.out.println(user.printDetails());
                 }
             }
+        } else {
+            throw new RuntimeException("You must be logged in to do this");
         }
     }
 

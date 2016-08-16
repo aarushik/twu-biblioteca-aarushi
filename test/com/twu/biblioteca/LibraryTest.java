@@ -119,4 +119,10 @@ public class LibraryTest {
        library.checkoutArticle("Intro to Java");
     }
 
+    @Test(expected = RuntimeException.class)
+    public void itShouldThrowAnExceptionIfNotLoggedInPrintingDetails() {
+        library.setLoggedIn(false);
+        library.printUserDetails();
+    }
+
 }
