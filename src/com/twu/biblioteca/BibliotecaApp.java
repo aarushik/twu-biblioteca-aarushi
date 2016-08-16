@@ -6,12 +6,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class BibliotecaApp {
-
+        static String id;
+        static String password;
 
     public static void main(String[] args) {
         int userChoice = -1;
 
         Library library = populateLibrary();
+        Credential creds = new Credential(library);
         welcomeMenu();
 
         while (userChoice != -2) {
@@ -27,11 +29,25 @@ public class BibliotecaApp {
             } else if(userChoice == 2) {
                 library.listMovies();
             } else if(userChoice == 3) {
-                System.out.println("Enter book name");
-                library.checkoutArticle(getBookName());
+                challengeUser();
+
+                if(creds.authenticate(id, password)) {
+                    library.setLoggedIn(true);
+                    System.out.println("Enter book name");
+                    library.checkoutArticle(getString());
+                } else {
+                    System.out.println("Incorrect credentials.");
+                }
+
             } else if (userChoice == 4) {
-                System.out.println("Enter book name");
-                library.returnArticle(getBookName());
+                challengeUser();
+                if(creds.authenticate(id, password)){
+                    System.out.println("Enter book name");
+                    library.returnArticle(getString());
+                } else {
+                    System.out.println("Incorrect credentials.");
+                }
+
             } else if (userChoice == 5 ) {
 
                 if(library.getLoggedIn()) {
@@ -80,14 +96,6 @@ public class BibliotecaApp {
         return library;
     }
 
-    private static void populateMovies() {
-        Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-        Movie movie2 = new Movie("Suicide Squad", "John", 2016, 10, true);
-//
-//        movies.add(movie1);
-//        movies.add(movie2);
-    }
-
     private static void welcomeMenu() {
         System.out.println("Welcome to Biblioteca!");
     }
@@ -115,7 +123,7 @@ public class BibliotecaApp {
         return userInt;
     }
 
-    private static String getBookName() {
+    private static String getString() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String bookName = "";
         try {
@@ -124,5 +132,12 @@ public class BibliotecaApp {
             e.printStackTrace();
         }
         return bookName;
+    }
+
+    private static void challengeUser() {
+        System.out.println("Enter library Id:");
+        id = getString();
+        System.out.println("Enter password:");
+        password = getString();
     }
 }
