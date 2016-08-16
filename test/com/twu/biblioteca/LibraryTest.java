@@ -40,7 +40,7 @@ public class LibraryTest {
         when(user.getLibraryNumber()).thenReturn("111-1111");
         when(user.getPassword()).thenReturn("password");
 
-        populateLibrary();
+        library = TestHelper.populateLibrary();
 
 
         console = System.out;
@@ -112,23 +112,6 @@ public class LibraryTest {
         assertEquals(null, library.getUser("invalidID"));
     }
 
-    private void populateLibrary() {
-        ArrayList<Article> articles = new ArrayList<Article>();
-        ArrayList<User> users = new ArrayList<User>();
 
-        Book javaBook = new Book("Aarushi", 2016, "Intro to Java", true);
-
-        Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-
-        User user = new User("111-1111", "password", "Aarushi Kansal", false, "user@email.com", "0430512710");
-        users.add(user);
-
-        articles.add(javaBook);
-        articles.add(movie1);
-
-        library = new Library(articles, users);
-
-
-    }
 
 }
