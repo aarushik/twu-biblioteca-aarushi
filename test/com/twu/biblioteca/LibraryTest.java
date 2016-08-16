@@ -113,5 +113,10 @@ public class LibraryTest {
     }
 
 
+    @Test(expected = RuntimeException.class)
+    public void itShouldThrowAnExceptionIfNotLoggedIn() {
+        library.setLoggedIn(false);
+       library.checkoutArticle("Intro to Java");
+    }
 
 }

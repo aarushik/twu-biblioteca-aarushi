@@ -16,7 +16,7 @@ public class Library {
     private static ArrayList<User> users = new ArrayList<User>();
     private String currentUserId;
     private String currentUserPassword;
-    private Boolean loggedIn = true;
+    private Boolean loggedIn = false;
     private User loggedInUser;
 
 
@@ -66,8 +66,7 @@ public class Library {
                 System.out.println("That article is not available");
             }
         } else {
-            authenticate();
-            checkoutArticle(bookName);
+            throw new RuntimeException("You must be logged in to do this");
         }
     }
 
@@ -87,8 +86,7 @@ public class Library {
                 System.out.println("That is not a valid article to return");
             }
         } else {
-            authenticate();
-            returnArticle(bookName);
+            throw new RuntimeException("You must be logged in to do this");
         }
 
     }
@@ -114,6 +112,10 @@ public class Library {
             }
         }
         return null;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
 
     private void printLoginPrompt() {

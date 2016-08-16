@@ -26,7 +26,9 @@ public class TestHelper {
         articles.add(javaBook);
         articles.add(movie1);
 
+
         library = new Library(articles, users);
+        library.setLoggedIn(true);
 
         return library;
     }
