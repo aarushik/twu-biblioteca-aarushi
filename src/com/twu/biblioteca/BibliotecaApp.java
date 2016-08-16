@@ -10,12 +10,16 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         int userChoice = -1;
-        populateLibrary();
-        Library library = new Library(articles);
+        //populateLibrary();
+        Library library = new Library();
         welcomeMenu();
 
-        while (userChoice != 0) {
-            printMenu();
+        while (userChoice != -2) {
+            if(library.getLoggedIn()) {
+                printLoggedInMenu();
+            }else {
+                printMenu();
+            }
             userChoice = getInteger();
 
             if(userChoice == 1) {
@@ -28,8 +32,21 @@ public class BibliotecaApp {
             } else if (userChoice == 4) {
                 System.out.println("Enter book name");
                 library.returnArticle(getBookName());
-            } else if (userChoice == 5) {
-                System.exit(0);
+            } else if (userChoice == 5 ) {
+
+                if(library.getLoggedIn()) {
+                    library.printUserDetails();
+                } else {
+                  System.exit(0);
+                }
+
+            } else if (userChoice == 6) {
+                if (library.getLoggedIn()) {
+                    System.exit(0);
+                } else {
+                    System.out.println("Enter a valid option");
+                }
+
             } else {
                 System.out.println("Enter a valid option");
             }
@@ -67,6 +84,12 @@ public class BibliotecaApp {
         System.out.println("Please choose one of the following options: \n 1: List Books \n 2: List Movies" +
                 " \n 3: Checkout" +
                 "\n 4: Return \n 5: Exit");
+    }
+
+    private static void printLoggedInMenu() {
+        System.out.println("Please choose one of the following options: \n 1: List Books \n 2: List Movies" +
+                " \n 3: Checkout" +
+                "\n 4: Return \n 5:User information \n 6:Exit");
     }
 
     private static int getInteger() {

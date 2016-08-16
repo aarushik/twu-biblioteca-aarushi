@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Aarushi on 3/08/2016.
@@ -17,50 +18,63 @@ public class LibraryTest {
     Library library;
     Book book1;
     Book book2;
-    Book book3;
+
     Movie movie1;
     Movie movie2;
+    User user;
+
+    private PrintStream console;
+    private ByteArrayOutputStream outputStream;
 
     @Before
     public void setUp() {
-        book1 = new Book("Aarushi", 2016, "Intro to Java", true);
-        book2 = new Book("Aarushi", 2014, "Intro to Ruby", true);
-        book3 = new Book("Aarushi", 2013, "Intro to R", false);
-        movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
-        movie2 = new Movie("Suicide Squad", "John", 2016, 10, false);
-        ArrayList<Article> articles = new ArrayList<Article>();
-        articles.add(book1);
-        articles.add(book2);
-        articles.add(book3);
-        articles.add(movie1);
-        articles.add(movie2);
 
-        library = new Library(articles);
+        book1 = mock(Book.class);
+        user = mock(User.class);
+
+        //Mock book details
+        when(book1.getTitle()).thenReturn("Intro to Java");
+
+        //Mock user credentials
+        when(user.getLibraryNumber()).thenReturn("111-1111");
+        when(user.getPassword()).thenReturn("password");
+
+        library = new Library();
+
+        console = System.out;
+        outputStream = new ByteArrayOutputStream();
+
+
+
     }
 
     @Test
     public void testBookCheckout() {
+        System.setOut(new PrintStream(outputStream));
         library.checkoutArticle("Intro to Java"); //removing book 1
-        assertEquals(false, book1.getAvailability());
+        assertEquals(true,outputStream.toString().contains("Enjoy the article"));
     }
 
     @Test
     public void testBookReturn() {
-        library.returnArticle("Intro to R");
-        assertEquals(true, book3.getAvailability());
+        System.setOut(new PrintStream(outputStream));
+        library.returnArticle("Intro to Java");
+        assertEquals(true,outputStream.toString().contains("returning that article"));
     }
 
     @Test
     public void testMovieCheckout() {
+        System.setOut(new PrintStream(outputStream));
         library.checkoutArticle("Harry Potter");
-        assertEquals(false, movie1.getAvailability());
+        assertEquals(true,outputStream.toString().contains("Enjoy the article"));
 
     }
 
     @Test
     public void testMovieReturn() {
+        System.setOut(new PrintStream(outputStream));
         library.returnArticle("Suicide Squad");
-        assertEquals(true, movie2.getAvailability());
+        assertEquals(true,outputStream.toString().contains("returning that article"));
     }
 
     @Test
