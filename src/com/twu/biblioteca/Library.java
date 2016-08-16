@@ -107,9 +107,14 @@ public class Library {
         return loggedIn;
     }
 
-//    public User getUser(String libraryId) {
-//
-//    }
+    public User getUser(String libraryId) {
+        for (User user : users) {
+            if (user.getLibraryNumber().equals(libraryId)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
     private void printLoginPrompt() {
         System.out.println("Enter User Id:");

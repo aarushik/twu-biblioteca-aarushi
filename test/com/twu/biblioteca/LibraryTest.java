@@ -99,15 +99,17 @@ public class LibraryTest {
         assertEquals("That article is not available\n", output.toString());
     }
 
-    @Ignore
+    @Test
     public void itShouldReturnUserIfExists() {
-
+        User retrivedUser = library.getUser("111-1111");
+        assertEquals("111-1111", retrivedUser.getLibraryNumber());
+        assertEquals("Aarushi Kansal", retrivedUser.getName());
 
     }
 
-    @Ignore
+    @Test
     public void itShouldReturnNullIfUserDoesNotExist() {
-
+        assertEquals(null, library.getUser("invalidID"));
     }
 
     private void populateLibrary() {
@@ -117,6 +119,9 @@ public class LibraryTest {
         Book javaBook = new Book("Aarushi", 2016, "Intro to Java", true);
 
         Movie movie1 = new Movie("Harry Potter", "David Yates", 2009, 10, true);
+
+        User user = new User("111-1111", "password", "Aarushi Kansal", false, "user@email.com", "0430512710");
+        users.add(user);
 
         articles.add(javaBook);
         articles.add(movie1);
